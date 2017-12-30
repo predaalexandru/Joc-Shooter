@@ -14,4 +14,7 @@ function main_call_setupContent() {
 	
 	var image_ids= ["#SZ1","#SZ2","#SZ3"];
 	var image_sizes = [ [150, 150], [200, 90], [235, 100] ];
+	
+	//Arma
+	setup_gun_SS();
 }
