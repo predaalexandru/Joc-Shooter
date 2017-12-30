@@ -6,3 +6,11 @@ function reloadGun(e) {
 		$("#SZ1").animateSprite("play", "reload");
 	}
 }
+
+//Functie trage arma
+function fireGun(e) {
+	if(canIclick==0) {
+		canIclick = 1;
+		$("#SZ1").animateSprite("play", "fire");
+	}
+}
