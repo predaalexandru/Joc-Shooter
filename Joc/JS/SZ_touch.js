@@ -1,4 +1,8 @@
+var canIclick = 0;
 //Functie incarcare arma
 function reloadGun(e) {
-	$("#SZ1").animateSprite("play", "reload");
+	if(canIclick==0) {
+		canIclick = 1;
+		$("#SZ1").animateSprite("play", "reload");
+	}
 }

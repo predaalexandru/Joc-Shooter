@@ -26,6 +26,7 @@ function setup_gun_SS() {
 		complete: function() {
 			'loop: false'
 			//alert("Animation End");
+			canIclick = 0;
 		}
 	});
 }
