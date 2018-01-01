@@ -18,4 +18,34 @@ function SZ_createZombie(whichOne) {
 	document.body.appendChild(div);
 	
 	setup_zombie_SS(whichOne);
+	
+	SZ_animateZombie(whichOne);
+	
+}
+
+//Animare zombi sa se apropie
+function SZ_animateZombie(whichOne) {
+	var timex = [13000,8000,16000,14000,10000,18000];
+	
+	var $zombiex = $("#zombie"+whichOne);
+	
+	var amty = ($(window).height()*0.7);
+	var ZS_ease = ['easeInSine','easeOutQuart','easeInOutQuad','easeInSine','easeOutQuart','easeInOutQuad'];
+	
+	//animare zombi
+	$zombiex.animate({
+		left: amty+ "px",
+	}, {
+		easing: ZS_ease[whichOne-1],
+		duration: timex[whichOne-1],
+		step: function(now, fx) {
+			if(fx.prop == "left") {
+				var xx = (fx.pos)*16;
+				$(this).css('transform','scale('+xx+')');
+			}
+		},
+		complete: function() {
+		
+		}
+	});
 }
