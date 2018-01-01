@@ -30,3 +30,27 @@ function setup_gun_SS() {
 		}
 	});
 }
+
+//creare functie zombi
+function setup_zombie_SS(whichOne){
+
+	var type_zombie = [1,2,3,1,2,3];
+
+	var speed_zombie = [100,50,150];
+
+	setup_SpriteSheet("#zombie"+whichOne,"Images/zombiesSS_"+type_zombie[whichOne-1]+".png",9,20,20);
+
+	$("#zombie"+whichOne).animateSprite({
+		fps: 10,
+		animations: {
+		static: [0,1,2,3,4,5,6,7],
+		},
+		duration: speed_zombie[type_zombie[whichOne-1]-1],
+		loop: true,
+		complete: function () {
+
+		'loop: false'
+		//alert("animation End");
+		}
+	});
+}

@@ -1,4 +1,5 @@
 var canIclick = 0;
+
 //Functie incarcare arma
 function reloadGun(e) {
 	if(canIclick==0) {

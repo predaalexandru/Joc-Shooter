@@ -17,4 +17,7 @@ function main_call_setupContent() {
 	
 	//Arma
 	setup_gun_SS();
+	
+	//Zombi
+	SZ_createZombie(1);
 }
