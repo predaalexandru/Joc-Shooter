@@ -29,23 +29,42 @@ function SZ_animateZombie(whichOne) {
 	
 	var $zombiex = $("#zombie"+whichOne);
 	
+	$zombiex.css('transform', 'scale('+0+')');
+	
 	var amty = ($(window).height()*0.7);
 	var ZS_ease = ['easeInSine','easeOutQuart','easeInOutQuad','easeInSine','easeOutQuart','easeInOutQuad'];
 	
 	//animare zombi
-	$zombiex.animate({
-		left: amty+ "px",
+	$zombiex.delay(time[whichOne-1]/3).animate({
+		left: "+="+1+ "px",
 	}, {
 		easing: ZS_ease[whichOne-1],
 		duration: timex[whichOne-1],
 		step: function(now, fx) {
 			if(fx.prop == "left") {
 				var xx = (fx.pos)*16;
-				$(this).css('transform','scale('+xx+')');
+					if(xx > 15) {
+						$(this).stop();
+						SZ_resetZombie(whichOne);
+					} else {
+						$(this).css('transform','scale('+xx+')');
+					}
 			}
 		},
 		complete: function() {
-		
 		}
 	});
+}
+
+function SZ_resetZombie(whichOne) {
+	//atribuim un user pt div
+	var $zombiex = $("#zombie"+whichOne);
+	
+	var top_position = $('#SZ0').height() * 0.435;
+	var left_position = Math.floor(Math.random() * ($('#SZ0').width())-(ratio*50)) + (ratio*50);
+	
+	//repozitionare zombie
+	$zombiex.css({top: top_position+'px', left: left_position+'px'});
+	
+	SZ_animateZombie(whichOne);
 }
