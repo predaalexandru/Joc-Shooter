@@ -21,6 +21,10 @@ function SZ_createZombie(whichOne) {
 	
 	SZ_animateZombie(whichOne);
 	
+	//cand facem click pe zombie
+	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
+		fireGun(event);
+	});
 }
 
 //Animare zombi sa se apropie
