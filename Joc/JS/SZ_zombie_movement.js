@@ -35,7 +35,7 @@ function SZ_animateZombie(whichOne) {
 	var ZS_ease = ['easeInSine','easeOutQuart','easeInOutQuad','easeInSine','easeOutQuart','easeInOutQuad'];
 	
 	//animare zombi
-	$zombiex.delay(time[whichOne-1]/3).animate({
+	$zombiex.delay(timex[whichOne-1]/3).animate({
 		left: "+="+1+ "px",
 	}, {
 		easing: ZS_ease[whichOne-1],
