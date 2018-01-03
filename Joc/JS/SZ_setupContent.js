@@ -22,7 +22,7 @@ function main_call_setupContent() {
 	SZ_createZombie(1);
 	
 	//Creare zombie
-	for(i = 1 ; i < 8; i++) {
+	for(i = 1 ; i < 7; i++) {
 		SZ_createZombie(i);
 	}
 }
