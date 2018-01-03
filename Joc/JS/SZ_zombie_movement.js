@@ -24,6 +24,7 @@ function SZ_createZombie(whichOne) {
 	//cand facem click pe zombie
 	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
 		fireGun(event);
+		zombieHit(whichOne-1);
 	});
 }
 
@@ -61,8 +62,12 @@ function SZ_animateZombie(whichOne) {
 }
 
 function SZ_resetZombie(whichOne) {
+	
+	zombieHits_counter[whichOne-1]=0;
 	//atribuim un user pt div
 	var $zombiex = $("#zombie"+whichOne);
+	
+	$zombiex.stop();
 	
 	var top_position = $('#SZ0').height() * 0.435;
 	var left_position = Math.floor(Math.random() * ($('#SZ0').width())-(ratio*50)) + (ratio*50);
