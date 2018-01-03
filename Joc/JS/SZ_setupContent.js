@@ -18,6 +18,11 @@ function main_call_setupContent() {
 	//Arma
 	setup_gun_SS();
 	
-	//Zombi
+	//Zombie
 	SZ_createZombie(1);
+	
+	//Creare zombie
+	for(i = 1 ; i < 8; i++) {
+		SZ_createZombie(i);
+	}
 }
