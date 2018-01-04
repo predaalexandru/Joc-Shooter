@@ -35,8 +35,10 @@ function SZ_createZombie(whichOne) {
 	
 	//cand facem click pe zombie
 	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
-		fireGun(event);
-		zombieHit(whichOne-1);
+		if($("#zombie"+whichOne).css('opacity')!=0){
+			fireGun(event);
+			zombieHit(whichOne-1);
+		}
 	});
 }
 
@@ -50,6 +52,9 @@ function SZ_animateZombie(whichOne) {
 	var $zombiex = $("#zombie"+whichOne);
 	
 	$zombiex.css('transform', 'scale('+0+')');
+	
+	//resetam opacitatea la zombie
+	$zombiex.css({opacity:1});
 	
 	var amty = ($(window).height()*0.7);
 	var ZS_ease = ['easeInSine','easeOutQuart','easeInOutQuad','easeInSine','easeOutQuart','easeInOutQuad'];
@@ -77,6 +82,7 @@ function SZ_animateZombie(whichOne) {
 	});
 }
 
+
 function SZ_resetZombie(whichOne, zombieBubble_generate) {
 	
 	zombieHits_counter[whichOne-1]=0;
@@ -91,9 +97,13 @@ function SZ_resetZombie(whichOne, zombieBubble_generate) {
 		var $bubble_zombiex = $("#bubble_zombie"+whichOne);
 		$bubble_zombiex.css({
 			top: top_position+'px',
-			left: $zombiex.css("left")
+			left: $zombiex.css("left"),
+			opacity:1
 		});
 		$bubble_zombiex.css('transform', 'scale('+scalex_zombie[whichOne-1]+')');
+		
+		//facem call la functia de animare bubble
+		bubbleZombie_flyAway(whichOne);
 	}
 	
 	var left_position = Math.floor(Math.random() * ($('#SZ0').width())-(ratio*50)) + (ratio*50);
@@ -102,7 +112,7 @@ function SZ_resetZombie(whichOne, zombieBubble_generate) {
 	leftx_zombie[whichOne-1] = left_position;
 	
 	//repozitionare zombie
-	$zombiex.css({top: top_position+'px', left: left_position+'px'});
+	$zombiex.css({top: top_position+'px', left: left_position+'px', opacity:0});
 	
 	SZ_animateZombie(whichOne);
 }

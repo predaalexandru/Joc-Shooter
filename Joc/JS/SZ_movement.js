@@ -5,3 +5,31 @@ function rotateGun(e) {
 	$("#SZ1").css('transform', 'rotate('+amountToRotate+'deg)');
 	
 }
+
+//Function pentru zombie
+function bubbleZombie_flyAway(whichOne) {
+	//asignam un nume pentru div
+	var $zombiex = $("#bubble_zombie"+whichOne);
+	$zombiex.animate({
+		top: "-="+100*ratio+ "px",
+	}, {
+		easing: "easeOutElastic",
+		duration: 400,
+		complete: function() {
+			$(this).delay(150).animate({
+				opacity: "-="+1,
+			}, {
+				easing: "easeOutQuint",
+				duration: 1000,
+				step: function(now, fx) {
+					if(fx.prop == "opacity" && fx.pos >= 0.1) {
+						var xx = 0.5/(fx.pos);
+						$(this).css('transform', 'scale('+xx+')');
+					}
+				}, complete: function() {
+					
+				}//sfarsit complete function
+			}); //sfarsit a doua animatie
+		}//sfarsit complete function
+	});//sfarsit prima animatie
+}
