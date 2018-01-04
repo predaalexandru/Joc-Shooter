@@ -35,7 +35,7 @@ function SZ_createZombie(whichOne) {
 	
 	//cand facem click pe zombie
 	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
-		if($("#zombie"+whichOne).css('opacity')!=0){
+		if($("#zombie"+whichOne).css('opacity')!=0 && $("#SZ2").css('opacity')!=1){
 			fireGun(event);
 			zombieHit(whichOne-1);
 		}
