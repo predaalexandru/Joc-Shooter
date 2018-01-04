@@ -10,6 +10,8 @@ function SZ_createZombie(whichOne) {
 	
 	var left_position = Math.floor(Math.random() * ($('#SZ0').width())-(ratio*50)) + (ratio*50);
 	
+	leftx_zombie[whichOne-1]=left_position;
+	
 	//pozitionarea zombi
 	div.style.left = left_position + 'px';
 	div.style.top = top_position + 'px';
@@ -28,12 +30,18 @@ function SZ_createZombie(whichOne) {
 	
 	SZ_animateZombie(whichOne);
 	
+	//Ascundem zombie-ul la inceput
+	$("#bubble_zombie"+whichOne).css('transform','scale('+0+')');
+	
 	//cand facem click pe zombie
 	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
 		fireGun(event);
 		zombieHit(whichOne-1);
 	});
 }
+
+var scalex_zombie = [0,0,0,0,0,0];
+var leftx_zombie = [0,0,0,0,0,0];
 
 //Animare zombi sa se apropie
 function SZ_animateZombie(whichOne) {
@@ -57,9 +65,10 @@ function SZ_animateZombie(whichOne) {
 				var xx = (fx.pos)*16;
 					if(xx > 15) {
 						$(this).stop();
-						SZ_resetZombie(whichOne);
+						SZ_resetZombie(whichOne,0);
 					} else {
 						$(this).css('transform','scale('+xx+')');
+						scalex_zombie[whichOne-1] = xx;
 					}
 			}
 		},
@@ -68,7 +77,7 @@ function SZ_animateZombie(whichOne) {
 	});
 }
 
-function SZ_resetZombie(whichOne) {
+function SZ_resetZombie(whichOne, zombieBubble_generate) {
 	
 	zombieHits_counter[whichOne-1]=0;
 	//atribuim un user pt div
@@ -77,7 +86,20 @@ function SZ_resetZombie(whichOne) {
 	$zombiex.stop();
 	
 	var top_position = $('#SZ0').height() * 0.435;
+	
+	if(zombieBubble_generate==1) {
+		var $bubble_zombiex = $("#bubble_zombie"+whichOne);
+		$bubble_zombiex.css({
+			top: top_position+'px',
+			left: $zombiex.css("left")
+		});
+		$bubble_zombiex.css('transform', 'scale('+scalex_zombie[whichOne-1]+')');
+	}
+	
 	var left_position = Math.floor(Math.random() * ($('#SZ0').width())-(ratio*50)) + (ratio*50);
+	
+	//pozitia stanga
+	leftx_zombie[whichOne-1] = left_position;
 	
 	//repozitionare zombie
 	$zombiex.css({top: top_position+'px', left: left_position+'px'});
