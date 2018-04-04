@@ -22,20 +22,18 @@ img {
 
 #logo {
 	position: absolute;
-	z-index:9999;
+	z-index: 9999;
 	background: url(../web/logo.png);
-	background-size:
-	cover;
-	pointer-events:none;
+	background-size: cover;
+	pointer-events: none;
 }
 
 #box1 {
 	position: absolute;
-	z-index:9998;
+	z-index: 9998;
 	background: url(../web/box.png);
-	background-size:
-	cover;
-	pointer-events:none;
+	background-size: cover;
+	pointer-events: none;
 	
 }
 #SZ_maincontent {
