@@ -49,12 +49,12 @@ function SZ_createZombie(whichOne) {
 	$('#SZ4').css("z-index", 201);
 	
 	//cand facem click pe zombie
-	$("#zombie"+whichOne).bind('mousedown touchstart', function(e) {
+	$("#zombie"+whichOne).bind('mousedown touchstart', function(event) {
 		if($("#SZ2").css('opacity')!=1){
 			fireGun(event);
 			if($("#zombie"+whichOne).css('opacity') !=0){
 				var offset = $(this).offset();
-				zombieHit(whichOne-1, e.pageX, e.pageY);
+				zombieHit(whichOne-1, event.pageX, event.pageY);
 			}
 		}
 	});
