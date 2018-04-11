@@ -58,7 +58,7 @@ function SZ_createZombie(whichOne) {
 			}
 		}
 	});
-	$("#bubble_zombie"+whichOne).bind('mousedown touchstart', function (e) {
+	$("#bubble_zombie"+whichOne).bind('mousedown touchstart', function (event) {
 		if($("#SZ2").css('opacity') !=1) {
 			fireGun(event);
 		}
